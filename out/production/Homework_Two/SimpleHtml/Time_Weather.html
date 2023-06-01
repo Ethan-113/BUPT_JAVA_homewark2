@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+    <title>时间与天气</title>
+</head>
+<body>
+<h1>欢迎</h1>
+<p>当前时间为: <%= new java.util.Date() %></p>
+<%
+String targetUrl = "http://www.weather.com.cn/weather1d/101010100.shtml#search";
+
+URL url = new URL(targetUrl);
+BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+String content = reader.lines().collect(Collectors.joining());
+reader.close();
+
+out.println(content);
+%>
+</body>
+</html>
